@@ -5,19 +5,13 @@ import com.example.joenarus.asteroids.Sprite;
 /**
  * Created by JoeNarus on 12/2/16.
  */
-public class Asteroid {
-    public int xPos; //centerX
-    public int yPos; //centerY
+public class Asteroid extends Entity {
+
     public boolean shieldMineral;
     public float radius;
-    public Sprite asteroid;
 
-
-    public Asteroid() {
-
-    }
-
-    public void move() {
+    public Asteroid(float x, float y, Sprite as) {
+        super(x,y, as);
 
     }
 }

@@ -1,13 +1,17 @@
 package com.example.joenarus.asteroids.tester;
 
 import android.app.Activity;
+import android.graphics.BitmapFactory;
 import android.opengl.GLSurfaceView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
+import com.example.joenarus.asteroids.Entities.Player;
 import com.example.joenarus.asteroids.GameDataModel;
+import com.example.joenarus.asteroids.MyApplication;
+import com.example.joenarus.asteroids.R;
 import com.example.joenarus.asteroids.Sprite;
 
 import java.util.ArrayList;
@@ -19,6 +23,9 @@ public class Main2Activity extends Activity {
     GameDataModel game;
     int height;
     int width;
+    Player player;
+
+
 
     public void getDispVals() {
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -33,6 +40,7 @@ public class Main2Activity extends Activity {
         getDispVals();
         game = GameDataModel.getInstance();
         mGLView = new MyGLSurfaceView(this, height, width);
+        
         setContentView(mGLView);
     }
 }

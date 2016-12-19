@@ -19,28 +19,6 @@ import com.example.joenarus.asteroids.R;
  */
 public class MyGLSurfaceView extends GLSurfaceView {
 
-    public class WorkerThread extends Thread{
-
-        private volatile boolean stopped = false;
-
-        @Override
-        public void run(){
-            super.run();
-            while(!stopped){
-                if(button_pressed) {
-                    mRenderer.setAngle(
-                            mRenderer.getAngle() + turn_dir);
-                }
-            }
-        }
-
-        public void stop_run(){
-            stopped = true;
-        }
-    }
-
-    WorkerThread thread;
-
     private final MyGLRenderer mRenderer;
     private float mPreviousX = 0;
     private float mPreviousY = 0;
@@ -80,7 +58,6 @@ public class MyGLSurfaceView extends GLSurfaceView {
 
         float temp_y = ((y/(xPixels/2)) - 1) * -1; //OpenGL coordinates
         float temp_x = (x/(yPixels/2)) - 1; //OpenGL coordinates
-        System.out.println("ANGLE: " + mRenderer.getAngle());
         if(e.getAction() == MotionEvent.ACTION_DOWN) {
                 if (temp_y <= -.5f) {
                     if (temp_x >= .4f) {
@@ -92,12 +69,12 @@ public class MyGLSurfaceView extends GLSurfaceView {
                             turn_dir = 10;
 
                         }
-                        mRenderer.setAngle(
-                                mRenderer.getAngle() + turn_dir);
+                        mRenderer.player.sprite.setAngle(
+                                mRenderer.player.sprite.getAngle() + turn_dir);
                     } else if (temp_x <= -.4f) {
                         if (temp_x <= -.4f && temp_x >= -.7f) {
-                            mRenderer.y_move += .01f;
-                            mRenderer.x_move += .01f;
+                            mRenderer.player.sprite.y_move += .01f;
+                            mRenderer.player.sprite.x_move += .01f;
 
                         } else if (temp_x < -.7f) {
                             //FIRE

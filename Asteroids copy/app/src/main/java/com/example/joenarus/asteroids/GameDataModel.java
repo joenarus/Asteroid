@@ -3,6 +3,7 @@ package com.example.joenarus.asteroids;
 import android.app.Activity;
 
 import com.example.joenarus.asteroids.Entities.Asteroid;
+import com.example.joenarus.asteroids.Entities.Entity;
 import com.example.joenarus.asteroids.Entities.Player;
 
 import java.util.ArrayList;
@@ -17,9 +18,9 @@ public class GameDataModel {
     Activity gameAct;
     public int score;
     public int lives;
-    Player player;
+    public Player player;
 
-    public List<Asteroid> asteroids;
+    public List<Entity> gameObjects;
 
     public static GameDataModel getInstance() {
         if(Instance == null) {
@@ -29,9 +30,10 @@ public class GameDataModel {
     }
 
     private GameDataModel() {
-        asteroids = new ArrayList<Asteroid>();
+        gameObjects = new ArrayList<Entity>();
         score = 0;
-        player = Player.getInstance();
+        Sprite ship = new Sprite();
+        player = new Player(9, ship);
     }
 
     public void setGameAct(Activity activity) {
@@ -49,7 +51,6 @@ public class GameDataModel {
     public void loseLife() {
         if(lives == 0) {
             GameOver();
-
         }
         else
             lives--;

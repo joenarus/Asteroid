@@ -9,31 +9,20 @@ import com.example.joenarus.asteroids.tester.MyGLRenderer;
 /**
  * Created by JoeNarus on 12/18/16.
  */
-public class Player {
+public class Player extends Entity {
 
-    public static Player getInstance() {
-       if(Instance == null)
-           Instance = new Player(9);
-        return Instance;
-    }
-
-    public static Player Instance;
     public static int lives;
-    public Sprite ship;
     public int velocityX;
     public int velocityY;
     public float angle; //radians
 
     public boolean isShielded = false;
 
-    private Player(int _lives) {
+    public Player(int _lives, Sprite ship) {
+        super(0,0, ship);
         lives = _lives;
         velocityX = 0;
         velocityY = 0;
-    }
-
-    public void update(float[] update_matrix) {
-        ship.draw(update_matrix);
     }
 
     public void shoot() {
